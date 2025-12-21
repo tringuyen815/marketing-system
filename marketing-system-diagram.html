@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Internet Marketing - Dạy Tiếng Anh Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #004E89;
+            --accent: #F77F00;
+            --success: #06A77D;
+            --bg-dark: #1A1A2E;
+            --bg-light: #F8F9FA;
+            --text-dark: #2D3142;
+            --text-light: #FFFFFF;
+            --card-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            --hover-shadow: 0 15px 50px rgba(0,0,0,0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: var(--secondary);
+            font-size: 1.2em;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .tab-btn {
+            padding: 15px 30px;
+            background: white;
+            border: 3px solid var(--secondary);
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1em;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,78,137,0.3);
+        }
+        
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 8px 25px rgba(0,78,137,0.4);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .diagram-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+        }
+        
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .flow-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            min-width: 200px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(102,126,234,0.3);
+            position: relative;
+        }
+        
+        .flow-box:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102,126,234,0.5);
+        }
+        
+        .flow-box.ads {
+            background: linear-gradient(135deg, #FF6B35 0%, #F77F00 100%);
+        }
+        
+        .flow-box.content {
+            background: linear-gradient(135deg, #06A77D 0%, #05668D 100%);
+        }
+        
+        .flow-box.lead {
+            background: linear-gradient(135deg, #E63946 0%, #D62828 100%);
+        }
+        
+        .flow-box.email {
+            background: linear-gradient(135deg, #4361EE 0%, #3A0CA3 100%);
+        }
+        
+        .flow-box.revenue {
+            background: linear-gradient(135deg, #FFD60A 0%, #FFC300 100%);
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+        
+        .flow-box-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .flow-box-number {
+            background: rgba(255,255,255,0.3);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+        }
+        
+        .flow-box-desc {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        
+        .arrow {
+            font-size: 3em;
+            color: var(--secondary);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.2);
+            font-weight: 700;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: rgba(255,255,255,0.4);
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+            border-left-width: 8px;
+        }
+        
+        .info-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-card li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .info-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .kpi-box {
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFF5E1 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .kpi-title {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .kpi-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(247,127,0,0.2);
+        }
+        
+        .kpi-item:last-child {
+            border-bottom: none;
+        }
+        
+        .kpi-value {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .roadmap {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .roadmap-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .phase {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            border-radius: 15px;
+            border-left: 6px solid var(--primary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .phase:hover {
+            transform: translateX(10px);
+            box-shadow: -5px 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .phase-number {
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+        
+        .phase-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .phase-timeline {
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-left: auto;
+        }
+        
+        .phase-content {
+            padding-left: 65px;
+        }
+        
+        .phase-tasks {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .phase-tasks li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dark);
+        }
+        
+        .phase-tasks li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .budget-note {
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFF5E1 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .budget-note strong {
+            color: var(--accent);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: var(--accent);
+            transform: rotate(90deg);
+        }
+        
+        .modal h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .modal-section {
+            margin-bottom: 25px;
+        }
+        
+        .modal-section h4 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .tool-item {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .tool-item:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .flow-row {
+                flex-direction: column;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .phase-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .phase-timeline {
+                margin-left: 0;
+            }
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #FFD60A 0%, #FFC300 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Hệ Thống Internet Marketing</h1>
+        <p class="subtitle">Dạy Tiếng Anh Online cho Người Đi Làm | Ngân Sách: < 10 Triệu/Tháng</p>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('overview')">📊 Tổng Quan Hệ Thống</button>
+            <button class="tab-btn" onclick="switchTab('details')">📋 Chi Tiết & KPI</button>
+            <button class="tab-btn" onclick="switchTab('roadmap')">🗺️ Roadmap Xây Dựng</button>
+            <button class="tab-btn" onclick="switchTab('budget')">💰 Phân Bổ Ngân Sách</button>
+        </div>
+        
+        <!-- TAB 1: TỔNG QUAN HỆ THỐNG -->
+        <div id="overview" class="tab-content active">
+            <div class="diagram-container">
+                <div class="flow-diagram">
+                    <!-- Bước 1: ADS -->
+                    <div class="flow-row">
+                        <div class="flow-box ads" onclick="showModal('ads')">
+                            <div class="flow-box-title">
+                                <span class="flow-box-number">1</span>
+                                <span>QUẢNG CÁO</span>
+                            </div>
+                            <div class="flow-box-desc">Tiếp cận khách hàng tiềm năng qua các nền tảng</div>
+                            <div class="social-icons">
+                                <div class="social-icon">FB</div>
+                                <div class="social-icon">TT</div>
+                                <div class="social-icon">YT</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-row">
+                        <div class="arrow">↓</div>
+                    </div>
+                    
+                    <!-- Bước 2 & 3: Content & Lead Page (song song) -->
+                    <div class="flow-row">
+                        <div class="flow-box content" onclick="showModal('content')">
+                            <div class="flow-box-title">
+                                <span class="flow-box-number">2</span>
+                                <span>NỘI DUNG</span>
+                            </div>
+                            <div class="flow-box-desc">Blog/SEO & Social Content để thu hút organic traffic</div>
+                        </div>
+                        
+                        <div class="flow-box lead" onclick="showModal('lead')">
+                            <div class="flow-box-title">
+                                <span class="flow-box-number">3</span>
+                                <span>LANDING PAGE</span>
+                            </div>
+                            <div class="flow-box-desc">Thu thập thông tin khách hàng tiềm năng</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-row">
+                        <div class="arrow">↓</div>
+                    </div>
+                    
+                    <!-- Bước 4: Email Marketing -->
+                    <div class="flow-row">
+                        <div class="flow-box email" onclick="showModal('email')">
+                            <div class="flow-box-title">
+                                <span class="flow-box-number">4</span>
+                                <span>EMAIL MARKETING</span>
+                            </div>
+                            <div class="flow-box-desc">Nuôi dưỡng leads và chuyển đổi thành học viên</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-row">
+                        <div class="arrow">↓</div>
+                    </div>
+                    
+                    <!-- Kết quả: Revenue -->
+                    <div class="flow-row">
+                        <div class="flow-box revenue">
+                            <div class="flow-box-title">
+                                <span>💰 DOANH THU</span>
+                            </div>
+                            <div class="flow-box-desc">Học viên đăng ký khóa học & tạo doanh thu</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🎯 Mục Tiêu Chính</h3>
+                    <ul>
+                        <li>Thu hút người đi làm muốn học tiếng Anh</li>
+                        <li>Xây dựng danh sách email chất lượng</li>
+                        <li>Tối ưu chi phí quảng cáo dưới 10 triệu/tháng</li>
+                        <li>Tăng tỷ lệ chuyển đổi từ lead sang học viên</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>👥 Khách Hàng Mục Tiêu</h3>
+                    <ul>
+                        <li>Độ tuổi: 25-40 tuổi</li>
+                        <li>Đang đi làm, muốn thăng tiến</li>
+                        <li>Cần tiếng Anh cho công việc</li>
+                        <li>Thời gian học linh hoạt (online)</li>
+                        <li>Thu nhập từ 10-30 triệu/tháng</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>⚡ Lợi Thế Cạnh Tranh</h3>
+                    <ul>
+                        <li>Lịch học linh hoạt cho người đi làm</li>
+                        <li>Tập trung vào tiếng Anh giao tiếp thực tế</li>
+                        <li>Học phí hợp lý, thanh toán linh hoạt</li>
+                        <li>Giáo viên có kinh nghiệm môi trường doanh nghiệp</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TAB 2: CHI TIẾT & KPI -->
+        <div id="details" class="tab-content">
+            <div class="info-grid">
+                <!-- Quảng Cáo -->
+                <div class="info-card">
+                    <h3>📱 1. QUẢNG CÁO (ADS)</h3>
+                    <p><strong>Mục tiêu:</strong> Tiếp cận 10,000-15,000 người/tháng</p>
+                    
+                    <div class="kpi-box">
+                        <div class="kpi-title">📊 KPI Chính</div>
+                        <div class="kpi-item">
+                            <span>CPM (Chi phí/1000 hiển thị)</span>
+                            <span class="kpi-value">20,000-40,000đ</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>CPC (Chi phí/click)</span>
+                            <span class="kpi-value">1,500-3,000đ</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>CTR (Tỷ lệ click)</span>
+                            <span class="kpi-value">> 1.5%</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Số lượng clicks/tháng</span>
+                            <span class="kpi-value">2,000-3,000</span>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 20px; color: var(--secondary);">Nội dung quảng cáo:</h4>
+                    <ul>
+                        <li>Video ngắn (30-60s) về trải nghiệm học viên</li>
+                        <li>Testimonial từ học viên thành công</li>
+                        <li>Ưu đãi học phí (giảm giá, tặng kèm tài liệu)</li>
+                        <li>Bài test trình độ miễn phí</li>
+                    </ul>
+                </div>
+                
+                <!-- Content Marketing -->
+                <div class="info-card">
+                    <h3>✍️ 2. NỘI DUNG (BLOG/SEO)</h3>
+                    <p><strong>Mục tiêu:</strong> 5,000-8,000 organic visitors/tháng (sau 6 tháng)</p>
+                    
+                    <div class="kpi-box">
+                        <div class="kpi-title">📊 KPI Chính</div>
+                        <div class="kpi-item">
+                            <span>Bài viết mới/tháng</span>
+                            <span class="kpi-value">8-12 bài</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Từ khóa đạt top 10</span>
+                            <span class="kpi-value">15-20 từ</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Thời gian ở lại trang</span>
+                            <span class="kpi-value">> 2 phút</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Bounce rate</span>
+                            <span class="kpi-value">< 60%</span>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 20px; color: var(--secondary);">Chủ đề nội dung:</h4>
+                    <ul>
+                        <li>Mẹo học tiếng Anh cho dân văn phòng</li>
+                        <li>Tiếng Anh giao tiếp trong công việc</li>
+                        <li>Cách viết email tiếng Anh chuyên nghiệp</li>
+                        <li>Lộ trình học tiếng Anh cho người đi làm</li>
+                        <li>Review sách/khóa học tiếng Anh</li>
+                    </ul>
+                </div>
+                
+                <!-- Landing Page -->
+                <div class="info-card">
+                    <h3>🎯 3. LANDING PAGE</h3>
+                    <p><strong>Mục tiêu:</strong> Conversion rate 15-25%</p>
+                    
+                    <div class="kpi-box">
+                        <div class="kpi-title">📊 KPI Chính</div>
+                        <div class="kpi-item">
+                            <span>Conversion Rate</span>
+                            <span class="kpi-value">15-25%</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Số leads/tháng</span>
+                            <span class="kpi-value">300-750</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Cost per Lead</span>
+                            <span class="kpi-value">10,000-25,000đ</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Form completion time</span>
+                            <span class="kpi-value">< 2 phút</span>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 20px; color: var(--secondary);">Các loại Landing Page:</h4>
+                    <ul>
+                        <li><strong>Test trình độ miễn phí:</strong> Thu thập email + số điện thoại</li>
+                        <li><strong>Webinar:</strong> Hội thảo online về bí quyết học tiếng Anh</li>
+                        <li><strong>Ebook miễn phí:</strong> 100 cụm từ tiếng Anh thường dùng</li>
+                        <li><strong>Học thử:</strong> 3 buổi học thử miễn phí</li>
+                    </ul>
+                </div>
+                
+                <!-- Email Marketing -->
+                <div class="info-card">
+                    <h3>📧 4. EMAIL MARKETING</h3>
+                    <p><strong>Mục tiêu:</strong> Chuyển đổi 10-15% leads thành học viên</p>
+                    
+                    <div class="kpi-box">
+                        <div class="kpi-title">📊 KPI Chính</div>
+                        <div class="kpi-item">
+                            <span>Open Rate</span>
+                            <span class="kpi-value">25-35%</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Click Rate</span>
+                            <span class="kpi-value">3-7%</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Conversion to Student</span>
+                            <span class="kpi-value">10-15%</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Unsubscribe rate</span>
+                            <span class="kpi-value">< 2%</span>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 20px; color: var(--secondary);">Chuỗi Email Tự Động:</h4>
+                    <ul>
+                        <li><strong>Email 1 (ngay):</strong> Gửi kết quả test + lộ trình học phù hợp</li>
+                        <li><strong>Email 2 (ngày 2):</strong> Câu chuyện thành công học viên</li>
+                        <li><strong>Email 3 (ngày 4):</strong> Ưu đãi đặc biệt có hạn</li>
+                        <li><strong>Email 4 (ngày 7):</strong> Giải đáp thắc mắc phổ biến</li>
+                        <li><strong>Email 5 (ngày 10):</strong> Last chance - ưu đãi sắp hết hạn</li>
+                    </ul>
+                </div>
+                
+                <!-- Doanh Thu -->
+                <div class="info-card" style="border-left-color: var(--success);">
+                    <h3>💰 5. DOANH THU</h3>
+                    <p><strong>Mục tiêu:</strong> 30-112 học viên/tháng</p>
+                    
+                    <div class="kpi-box">
+                        <div class="kpi-title">📊 Dự Báo Doanh Thu</div>
+                        <div class="kpi-item">
+                            <span>Số leads/tháng</span>
+                            <span class="kpi-value">300-750</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Tỷ lệ chuyển đổi</span>
+                            <span class="kpi-value">10-15%</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Học viên mới/tháng</span>
+                            <span class="kpi-value">30-112 HV</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Học phí trung bình</span>
+                            <span class="kpi-value">3-5 triệu/khóa</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span><strong>Doanh thu/tháng</strong></span>
+                            <span class="kpi-value"><strong>90-560 triệu</strong></span>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-note">
+                        <strong>⚡ ROI dự kiến:</strong> Với chi phí quảng cáo <10 triệu/tháng, ROI từ 900% - 5,600%
+                    </div>
+                </div>
+                
+                <!-- Tổng Quan KPI -->
+                <div class="info-card" style="border-left-color: var(--accent);">
+                    <h3>📈 TỔNG QUAN KPI TOÀN HỆ THỐNG</h3>
+                    
+                    <div class="kpi-box">
+                        <div class="kpi-title">🎯 Mục Tiêu Tháng Đầu</div>
+                        <div class="kpi-item">
+                            <span>Traffic tổng</span>
+                            <span class="kpi-value">12,000-18,000</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Leads mới</span>
+                            <span class="kpi-value">300-750</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Học viên mới</span>
+                            <span class="kpi-value">30-112 HV</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>CAC (Chi phí/học viên)</span>
+                            <span class="kpi-value">90,000-330,000đ</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>LTV (Giá trị học viên)</span>
+                            <span class="kpi-value">3-5 triệu</span>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-note" style="margin-top: 15px;">
+                        <strong>📌 Lưu ý:</strong> Các chỉ số này sẽ cải thiện dần theo thời gian khi hệ thống được tối ưu và tích lũy dữ liệu.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TAB 3: ROADMAP XÂY DỰNG -->
+        <div id="roadmap" class="tab-content">
+            <div class="roadmap">
+                <h2 class="roadmap-title">🗺️ Lộ Trình Xây Dựng Hệ Thống (12 Tuần)</h2>
+                
+                <!-- GIAI ĐOẠN 1 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">1</div>
+                        <div class="phase-title">NỀN TẢNG CƠ BẢN</div>
+                        <div class="phase-timeline">Tuần 1-2</div>
+                    </div>
+                    <div class="phase-content">
+                        <ul class="phase-tasks">
+                            <li><strong>Website/Blog:</strong> Thiết kế website chuyên nghiệp (WordPress/Webflow)</li>
+                            <li><strong>Fanpage:</strong> Tạo Facebook Page, TikTok, YouTube Channel</li>
+                            <li><strong>Lead Magnet:</strong> Tạo bài test trình độ online hoặc ebook miễn phí</li>
+                            <li><strong>Email Platform:</strong> Đăng ký GetResponse/Mailchimp (free plan)</li>
+                            <li><strong>Analytics:</strong> Cài đặt Google Analytics, Facebook Pixel</li>
+                            <li><strong>Branding:</strong> Logo, màu sắc, tone of voice thống nhất</li>
+                        </ul>
+                        <div class="budget-note">
+                            <strong>💰 Chi phí:</strong> 0-2 triệu (domain, hosting, theme)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GIAI ĐOẠN 2 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">2</div>
+                        <div class="phase-title">NỘI DUNG & SEO</div>
+                        <div class="phase-timeline">Tuần 3-4</div>
+                    </div>
+                    <div class="phase-content">
+                        <ul class="phase-tasks">
+                            <li><strong>Keyword Research:</strong> Tìm 50 từ khóa liên quan "học tiếng Anh cho người đi làm"</li>
+                            <li><strong>Content Calendar:</strong> Lập kế hoạch 12 bài viết đầu tiên</li>
+                            <li><strong>Viết Content:</strong> 8-12 bài blog chất lượng cao (1,500-2,000 từ/bài)</li>
+                            <li><strong>SEO On-page:</strong> Tối ưu title, meta, heading, internal linking</li>
+                            <li><strong>Video Content:</strong> Quay 5-10 video ngắn cho TikTok/YouTube Shorts</li>
+                            <li><strong>Social Content:</strong> Chuẩn bị 30 bài post cho Facebook</li>
+                        </ul>
+                        <div class="budget-note">
+                            <strong>💰 Chi phí:</strong> 0-1 triệu (nếu tự làm) hoặc 3-5 triệu (thuê copywriter)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GIAI ĐOẠN 3 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">3</div>
+                        <div class="phase-title">LANDING PAGES</div>
+                        <div class="phase-timeline">Tuần 5-6</div>
+                    </div>
+                    <div class="phase-content">
+                        <ul class="phase-tasks">
+                            <li><strong>LP 1:</strong> Trang test trình độ tiếng Anh miễn phí</li>
+                            <li><strong>LP 2:</strong> Trang đăng ký webinar/workshop miễn phí</li>
+                            <li><strong>LP 3:</strong> Trang download ebook/tài liệu</li>
+                            <li><strong>LP 4:</strong> Trang đăng ký học thử (trial class)</li>
+                            <li><strong>Forms:</strong> Thiết kế form thu thập thông tin (email, SĐT, mục tiêu)</li>
+                            <li><strong>CRM Integration:</strong> Kết nối form với email marketing tool</li>
+                            <li><strong>A/B Testing Setup:</strong> Chuẩn bị 2 phiên bản mỗi LP để test</li>
+                        </ul>
+                        <div class="budget-note">
+                            <strong>💰 Chi phí:</strong> 0-1 triệu (dùng tool miễn phí như Carrd, Google Forms)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GIAI ĐOẠN 4 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">4</div>
+                        <div class="phase-title">EMAIL AUTOMATION</div>
+                        <div class="phase-timeline">Tuần 7-8</div>
+                    </div>
+                    <div class="phase-content">
+                        <ul class="phase-tasks">
+                            <li><strong>Welcome Series:</strong> Tạo chuỗi 5-7 email chào mừng</li>
+                            <li><strong>Nurture Campaign:</strong> Email nuôi dưỡng leads (gửi tips, stories)</li>
+                            <li><strong>Sales Campaign:</strong> Chuỗi email bán khóa học (ưu đãi, deadline)</li>
+                            <li><strong>Re-engagement:</strong> Email kích hoạt lại leads "ngủ đông"</li>
+                            <li><strong>Segmentation:</strong> Phân nhóm leads theo hành vi, sở thích</li>
+                            <li><strong>Email Templates:</strong> Thiết kế 5-10 mẫu email đẹp, responsive</li>
+                        </ul>
+                        <div class="budget-note">
+                            <strong>💰 Chi phí:</strong> 0 (free plan) hoặc 300k-800k/tháng (paid plan)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GIAI ĐOẠN 5 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">5</div>
+                        <div class="phase-title">CHẠY QUẢNG CÁO</div>
+                        <div class="phase-timeline">Tuần 9-10</div>
+                    </div>
+                    <div class="phase-content">
+                        <ul class="phase-tasks">
+                            <li><strong>Facebook Ads:</strong> Tạo 5 campaigns (awareness, traffic, conversions)</li>
+                            <li><strong>TikTok Ads:</strong> Chạy 3 video ads (15s, 30s, 60s)</li>
+                            <li><strong>YouTube Ads:</strong> Video ads hoặc in-stream ads</li>
+                            <li><strong>Creative Assets:</strong> Chuẩn bị 15-20 ads creatives (image + video)</li>
+                            <li><strong>Copywriting:</strong> Viết 10 ad copies khác nhau để A/B test</li>
+                            <li><strong>Audience Setup:</strong> Thiết lập 5-8 audience segments</li>
+                            <li><strong>Budget Allocation:</strong> Phân bổ ngân sách: FB (50%), TikTok (30%), YT (20%)</li>
+                        </ul>
+                        <div class="budget-note">
+                            <strong>💰 Chi phí:</strong> 5-10 triệu/tháng cho ads budget
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GIAI ĐOẠN 6 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-number">6</div>
+                        <div class="phase-title">TỐI ƯU & MỞ RỘNG</div>
+                        <div class="phase-timeline">Tuần 11-12</div>
+                    </div>
+                    <div class="phase-content">
+                        <ul class="phase-tasks">
+                            <li><strong>Analytics Review:</strong> Phân tích data từ GA, FB Ads Manager</li>
+                            <li><strong>A/B Testing:</strong> Test và tối ưu ads, landing pages, emails</li>
+                            <li><strong>Retargeting:</strong> Thiết lập remarketing cho người đã visit website</li>
+                            <li><strong>Lookalike Audiences:</strong> Tạo LAL từ leads/customers</li>
+                            <li><strong>Scale Winners:</strong> Tăng budget cho campaigns hiệu quả nhất</li>
+                            <li><strong>Content Expansion:</strong> Nhân rộng content types (podcast, infographic...)</li>
+                            <li><strong>Partnership:</strong> Tìm kiếm affiliate/influencer collaboration</li>
+                        </ul>
+                        <div class="budget-note">
+                            <strong>💰 Chi phí:</strong> Giữ nguyên hoặc tăng budget nếu ROI tốt
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-grid" style="margin-top: 30px;">
+                <div class="info-card">
+                    <h3>⏱️ Timeline Tổng Quan</h3>
+                    <ul>
+                        <li><strong>Tuần 1-2:</strong> Setup cơ bản (website, fanpage, tools)</li>
+                        <li><strong>Tuần 3-4:</strong> Tạo nội dung chất lượng</li>
+                        <li><strong>Tuần 5-6:</strong> Xây dựng landing pages</li>
+                        <li><strong>Tuần 7-8:</strong> Thiết lập email automation</li>
+                        <li><strong>Tuần 9-10:</strong> Chạy quảng cáo đầu tiên</li>
+                        <li><strong>Tuần 11-12:</strong> Tối ưu và mở rộng</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>👥 Nhân Sự Cần Thiết</h3>
+                    <ul>
+                        <li><strong>Marketer:</strong> 1 người (có thể là bạn ban đầu)</li>
+                        <li><strong>Content Writer:</strong> 1 người hoặc outsource</li>
+                        <li><strong>Designer:</strong> Outsource khi cần (Fiverr, 99designs)</li>
+                        <li><strong>Video Editor:</strong> Outsource hoặc dùng tool tự động</li>
+                        <li>Sau 3-6 tháng: cân nhắc thuê fulltime marketer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TAB 4: PHÂN BỔ NGÂN SÁCH -->
+        <div id="budget" class="tab-content">
+            <div class="roadmap">
+                <h2 class="roadmap-title">💰 Phân Bổ Ngân Sách < 10 Triệu/Tháng</h2>
+                
+                <div class="info-grid">
+                    <!-- Chi phí Setup ban đầu -->
+                    <div class="info-card" style="border-left-color: var(--accent);">
+                        <h3>🔧 CHI PHÍ SETUP BAN ĐẦU</h3>
+                        <p style="margin-bottom: 15px;"><em>(Chỉ trả 1 lần)</em></p>
+                        
+                        <div class="kpi-box">
+                            <div class="kpi-item">
+                                <span>Domain + Hosting (1 năm)</span>
+                                <span class="kpi-value">1-2 triệu</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span>WordPress Theme/Template</span>
+                                <span class="kpi-value">0-1 triệu</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span>Logo & Branding</span>
+                                <span class="kpi-value">500k-2 triệu</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span>Stock Photos/Videos</span>
+                                <span class="kpi-value">0-500k</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span><strong>TỔNG SETUP</strong></span>
+                                <span class="kpi-value"><strong>1.5-5.5 triệu</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chi phí hàng tháng -->
+                    <div class="info-card" style="border-left-color: var(--primary);">
+                        <h3>📅 CHI PHÍ HÀNG THÁNG</h3>
+                        <p style="margin-bottom: 15px;"><em>(Vận hành liên tục)</em></p>
+                        
+                        <div class="kpi-box">
+                            <div class="kpi-item">
+                                <span>🎯 Quảng cáo (FB + TikTok + YT)</span>
+                                <span class="kpi-value">5-7 triệu</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span>📧 Email Marketing Tool</span>
+                                <span class="kpi-value">0-800k</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span>✍️ Content Writer (outsource)</span>
+                                <span class="kpi-value">0-2 triệu</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span>🎨 Design/Video (outsource)</span>
+                                <span class="kpi-value">500k-1 triệu</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span>🔧 Tools & Software</span>
+                                <span class="kpi-value">0-500k</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span><strong>TỔNG/THÁNG</strong></span>
+                                <span class="kpi-value"><strong>5.5-11.3 triệu</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="budget-note">
+                            <strong>💡 Tip:</strong> Bắt đầu với 5-6 triệu/tháng, scale up khi thấy ROI tốt
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phân bổ ngân sách quảng cáo -->
+                <div class="info-card" style="margin-top: 25px;">
+                    <h3>📊 PHÂN BỔ NGÂN SÁCH QUẢNG CÁO (6-7 triệu/tháng)</h3>
+                    
+                    <div class="info-grid">
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 15px;">Facebook Ads (50% - 3-3.5 triệu)</h4>
+                            <ul>
+                                <li><span class="highlight">1.5 triệu</span> - Awareness campaigns (video views)</li>
+                                <li><span class="highlight">1-1.5 triệu</span> - Lead generation (forms, landing pages)</li>
+                                <li><span class="highlight">500k-1 triệu</span> - Retargeting campaigns</li>
+                            </ul>
+                            <p style="margin-top: 10px; font-size: 0.95em; color: #666;">
+                                <strong>Tại sao:</strong> Facebook có đối tượng rộng, targeting chính xác, dễ scale
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 15px;">TikTok Ads (30% - 1.8-2.1 triệu)</h4>
+                            <ul>
+                                <li><span class="highlight">1-1.2 triệu</span> - TopView/In-Feed Video Ads</li>
+                                <li><span class="highlight">800k-900k</span> - Spark Ads (boost organic content)</li>
+                            </ul>
+                            <p style="margin-top: 10px; font-size: 0.95em; color: #666;">
+                                <strong>Tại sao:</strong> Xu hướng đang lên, giới trẻ 25-35 tuổi sử dụng nhiều
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 15px;">YouTube Ads (20% - 1.2-1.4 triệu)</h4>
+                            <ul>
+                                <li><span class="highlight">800k-1 triệu</span> - Skippable Video Ads</li>
+                                <li><span class="highlight">400k</span> - Discovery Ads</li>
+                            </ul>
+                            <p style="margin-top: 10px; font-size: 0.95em; color: #666;">
+                                <strong>Tại sao:</strong> Người xem video học tiếng Anh thường có nhu cầu cao
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chiến lược tiết kiệm -->
+                <div class="info-card" style="margin-top: 25px; border-left-color: var(--success);">
+                    <h3>💡 CHIẾN LƯỢC TIẾT KIỆM CHI PHÍ</h3>
+                    <div class="info-grid">
+                        <div>
+                            <h4 style="color: var(--success);">🆓 Dùng Tools Miễn Phí</h4>
+                            <ul>
+                                <li>Canva (thiết kế)</li>
+                                <li>CapCut (edit video)</li>
+                                <li>Google Analytics (phân tích)</li>
+                                <li>Mailchimp Free (500 contacts)</li>
+                                <li>Carrd/Google Forms (landing page)</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: var(--success);">👨‍💼 Tự Làm Giai Đoạn Đầu</h4>
+                            <ul>
+                                <li>Tự viết content (học SEO copywriting)</li>
+                                <li>Tự quay video bằng điện thoại</li>
+                                <li>Tự thiết kế đơn giản trên Canva</li>
+                                <li>Học chạy ads qua khóa free/YouTube</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: var(--success);">🎯 Tối Ưu ROI</h4>
+                            <ul>
+                                <li>Bắt đầu với budget nhỏ (5k/day)</li>
+                                <li>Dừng campaigns không hiệu quả sau 3-5 ngày</li>
+                                <li>Tập trung vào kênh có ROI cao nhất</li>
+                                <li>Tái sử dụng content (1 blog = 5 posts + 3 videos)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dự báo chi phí 6 tháng -->
+                <div class="info-card" style="margin-top: 25px; border-left-color: var(--secondary);">
+                    <h3>📈 DỰ BÁO CHI PHÍ 6 THÁNG ĐẦU</h3>
+                    
+                    <div class="kpi-box">
+                        <div class="kpi-item">
+                            <span>Tháng 1-2 (Testing phase)</span>
+                            <span class="kpi-value">5-6 triệu/tháng</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Tháng 3-4 (Optimization)</span>
+                            <span class="kpi-value">7-9 triệu/tháng</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span>Tháng 5-6 (Scaling)</span>
+                            <span class="kpi-value">10-15 triệu/tháng</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span><strong>TỔNG 6 THÁNG</strong></span>
+                            <span class="kpi-value"><strong>48-75 triệu</strong></span>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-note">
+                        <strong>🎯 Mục tiêu:</strong> Đạt break-even vào tháng 3-4, có lợi nhuận từ tháng 5
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MODALS CHO TỪNG BƯỚC -->
+    <div id="adsModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('adsModal')">×</button>
+            <h2>🎯 BƯỚC 1: QUẢNG CÁO (ADS)</h2>
+            
+            <div class="modal-section">
+                <h4>📱 Nền Tảng Quảng Cáo</h4>
+                <div class="tools-grid">
+                    <div class="tool-item">Facebook Ads</div>
+                    <div class="tool-item">TikTok Ads</div>
+                    <div class="tool-item">YouTube Ads</div>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <h4>🎨 Loại Quảng Cáo Hiệu Quả</h4>
+                <ul>
+                    <li><strong>Video Testimonial:</strong> Học viên chia sẻ trải nghiệm thực tế</li>
+                    <li><strong>Before/After:</strong> So sánh trình độ tiếng Anh trước và sau khóa học</li>
+                    <li><strong>Mini Lesson:</strong> Dạy 1 mẹo nhỏ thu hút người xem</li>
+                    <li><strong>Quiz/Challenge:</strong> "Bạn có biết 10 từ này không?" → dẫn đến test</li>
+                    <li><strong>Limited Offer:</strong> Ưu đãi giảm 30% chỉ 3 ngày (tạo urgency)</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h4>🎯 Targeting Strategy</h4>
+                <ul>
+                    <li><strong>Demographic:</strong> 25-40 tuổi, đang đi làm, thu nhập 10-30tr/tháng</li>
+                    <li><strong>Interest:</strong> English learning, TOEIC, IELTS, career development</li>
+                    <li><strong>Behavior:</strong> Frequent online shoppers, app users</li>
+                    <li><strong>Lookalike:</strong> Từ danh sách email hiện có (nếu có)</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h4>⚙️ Tools Cần Thiết</h4>
+                <div class="tools-grid">
+                    <div class="tool-item">Facebook Ads Manager</div>
+                    <div class="tool-item">TikTok Ads Manager</div>
+                    <div class="tool-item">Google Ads</div>
+                    <div class="tool-item">Canva (design)</div>
+                    <div class="tool-item">CapCut (video)</div>
+                    <div class="tool-item">Facebook Pixel</div>
+                </div>
+            </div>
+            
+            <div class="kpi-box">
+                <div class="kpi-title">📊 KPI Cần Theo Dõi</div>
+                <div class="kpi-item"><span>CPM (Cost per 1000 impressions)</span><span class="kpi-value">20k-40k</span></div>
+                <div class="kpi-item"><span>CPC (Cost per click)</span><span class="kpi-value">1.5k-3k</span></div>
+                <div class="kpi-item"><span>CTR (Click-through rate)</span><span class="kpi-value">> 1.5%</span></div>
+                <div class="kpi-item"><span>CPL (Cost per lead)</span><span class="kpi-value">10k-25k</span></div>
+                <div class="kpi-item"><span>ROAS (Return on ad spend)</span><span class="kpi-value">> 3x</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="contentModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('contentModal')">×</button>
+            <h2>✍️ BƯỚC 2: NỘI DUNG (BLOG/SEO)</h2>
+            
+            <div class="modal-section">
+                <h4>📝 Chiến Lược Content</h4>
+                <ul>
+                    <li><strong>SEO Blog:</strong> 8-12 bài/tháng, 1500-2000 từ, tối ưu cho từ khóa</li>
+                    <li><strong>Social Content:</strong> 2-3 posts/ngày trên Facebook</li>
+                    <li><strong>Video Short:</strong> 3-5 video/tuần cho TikTok/YouTube Shorts</li>
+                    <li><strong>Long-form Video:</strong> 1-2 video/tháng cho YouTube</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h4>🔑 Chủ Đề Content Hiệu Quả</h4>
+                <div class="tools-grid">
+                    <div class="tool-item">Mẹo học tiếng Anh</div>
+                    <div class="tool-item">Lỗi phát âm thường gặp</div>
+                    <div class="tool-item">Email tiếng Anh công sở</div>
+                    <div class="tool-item">Từ vựng chuyên ngành</div>
+                    <div class="tool-item">Câu chuyện học viên</div>
+                    <div class="tool-item">Review sách/app/khóa học</div>
+                    <div class="tool-item">So sánh các phương pháp</div>
+                    <div class="tool-item">Lộ trình học IELTS/TOEIC</div>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <h4>🎯 SEO Keywords (Ví dụ)</h4>
+                <ul>
+                    <li>"học tiếng anh cho người đi làm"</li>
+                    <li>"tiếng anh giao tiếp công sở"</li>
+                    <li>"khóa học tiếng anh online"</li>
+                    <li>"cách viết email tiếng anh"</li>
+                    <li>"luyện nói tiếng anh cho người bận rộn"</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h4>⚙️ Tools Hỗ Trợ</h4>
+                <div class="tools-grid">
+                    <div class="tool-item">Google Keyword Planner</div>
+                    <div class="tool-item">Ubersuggest (free)</div>
+                    <div class="tool-item">AnswerThePublic</div>
+                    <div class="tool-item">Grammarly</div>
+                    <div class="tool-item">Hemingway Editor</div>
+                    <div class="tool-item">Canva (infographic)</div>
+                </div>
+            </div>
+            
+            <div class="kpi-box">
+                <div class="kpi-title">📊 KPI Cần Theo Dõi</div>
+                <div class="kpi-item"><span>Organic traffic/tháng</span><span class="kpi-value">5k-8k (sau 6 tháng)</span></div>
+                <div class="kpi-item"><span>Avg. time on page</span><span class="kpi-value">> 2 phút</span></div>
+                <div class="kpi-item"><span>Bounce rate</span><span class="kpi-value">< 60%</span></div>
+                <div class="kpi-item"><span>Keywords in top 10</span><span class="kpi-value">15-20 từ</span></div>
+                <div class="kpi-item"><span>Social engagement rate</span><span class="kpi-value">> 3%</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="leadModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('leadModal')">×</button>
+            <h2>🎯 BƯỚC 3: LANDING PAGE</h2>
+            
+            <div class="modal-section">
+                <h4>📄 Các Loại Landing Page Cần Có</h4>
+                <ul>
+                    <li><strong>Test Trình Độ:</strong> 15-20 câu hỏi trắc nghiệm → kết quả qua email</li>
+                    <li><strong>Webinar Registration:</strong> Đăng ký workshop "Bí quyết học tiếng Anh hiệu quả"</li>
+                    <li><strong>Ebook Download:</strong> "100 cụm từ tiếng Anh thường dùng trong công việc"</li>
+                    <li><strong>Trial Class:</strong> Đăng ký 3 buổi học thử miễn phí</li>
+                    <li><strong>Consultation:</strong> Đặt lịch tư vấn 1-1 miễn phí</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h4>🎨 Cấu Trúc Landing Page Hiệu Quả</h4>
+                <ul>
+                    <li><strong>Hero Section:</strong> Headline hấp dẫn + CTA button rõ ràng</li>
+                    <li><strong>Benefits:</strong> 3-5 lợi ích chính khi đăng ký</li>
+                    <li><strong>Social Proof:</strong> Testimonials, số lượng học viên, rating</li>
+                    <li><strong>Simple Form:</strong> Chỉ hỏi thông tin cần thiết (tên, email, SĐT)</li>
+                    <li><strong>Trust Signals:</strong> Chứng chỉ, giải thưởng, logo đối tác</li>
+                    <li><strong>Urgency:</strong> "Chỉ còn 10 suất" hoặc "Ưu đãi hết hạn sau 3 ngày"</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h4>⚙️ Tools Tạo Landing Page</h4>
+                <div class="tools-grid">
+                    <div class="tool-item">Carrd (free)</div>
+                    <div class="tool-item">Google Forms</div>
+                    <div class="tool-item">Tally Forms</div>
+                    <div class="tool-item">Unbounce</div>
+                    <div class="tool-item">Leadpages</div>
+                    <div class="tool-item">WordPress + Elementor</div>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <h4>🧪 A/B Testing Ideas</h4>
+                <ul>
+                    <li>Test 2 headlines khác nhau</li>
+                    <li>Test màu CTA button (xanh vs cam)</li>
+                    <li>Test form ngắn (2 fields) vs form dài (5 fields)</li>
+                    <li>Test có/không có video</li>
+                    <li>Test các benefit khác nhau</li>
+                </ul>
+            </div>
+            
+            <div class="kpi-box">
+                <div class="kpi-title">📊 KPI Cần Theo Dõi</div>
+                <div class="kpi-item"><span>Conversion rate</span><span class="kpi-value">15-25%</span></div>
+                <div class="kpi-item"><span>Số leads/tháng</span><span class="kpi-value">300-750</span></div>
+                <div class="kpi-item"><span>Cost per lead</span><span class="kpi-value">10k-25k</span></div>
+                <div class="kpi-item"><span>Form completion time</span><span class="kpi-value">< 2 phút</span></div>
+                <div class="kpi-item"><span>Bounce rate</span><span class="kpi-value">< 40%</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('emailModal')">×</button>
+            <h2>📧 BƯỚC 4: EMAIL MARKETING</h2>
+            
+            <div class="modal-section">
+                <h4>📨 Chuỗi Email Automation</h4>
+                <ul>
+                    <li><strong>Email 1 (ngay lập tức):</strong> Welcome + gửi kết quả test/ebook</li>
+                    <li><strong>Email 2 (24h sau):</strong> Câu chuyện học viên thành công</li>
+                    <li><strong>Email 3 (48h sau):</strong> Ưu đãi đặc biệt (giảm 30% cho 50 người đầu)</li>
+                    <li><strong>Email 4 (ngày 4):</strong> Giải đáp 5 thắc mắc phổ biến</li>
+                    <li><strong>Email 5 (ngày 7):</strong> Social proof (video học viên, rating)</li>
+                    <li><strong>Email 6 (ngày 10):</strong> Last chance - ưu đãi sắp hết hạn</li>
+                    <li><strong>Email 7 (ngày 14):</strong> Mời tham gia cộng đồng học viên</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h4>✍️ Email Copywriting Tips</h4>
+                <ul>
+                    <li><strong>Subject line:</strong> Ngắn gọn, tạo tò mò, cá nhân hóa</li>
+                    <li><strong>Personalization:</strong> Dùng tên, dữ liệu hành vi</li>
+                    <li><strong>Storytelling:</strong> Kể câu chuyện thay vì chỉ bán hàng</li>
+                    <li><strong>Clear CTA:</strong> 1 email = 1 hành động rõ ràng</li>
+                    <li><strong>Mobile-friendly:</strong> 60% mở email trên mobile</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h4>🎯 Phân Khúc (Segmentation)</h4>
+                <div class="tools-grid">
+                    <div class="tool-item">Mới đăng ký</div>
+                    <div class="tool-item">Đã mở email</div>
+                    <div class="tool-item">Đã click link</div>
+                    <div class="tool-item">Chưa mở email</div>
+                    <div class="tool-item">Đã đăng ký trial</div>
+                    <div class="tool-item">Đã mua khóa học</div>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <h4>⚙️ Email Marketing Tools</h4>
+                <div class="tools-grid">
+                    <div class="tool-item">Mailchimp (Free: 500 contacts)</div>
+                    <div class="tool-item">GetResponse</div>
+                    <div class="tool-item">Brevo (ex-Sendinblue)</div>
+                    <div class="tool-item">MailerLite</div>
+                    <div class="tool-item">ConvertKit</div>
+                </div>
+            </div>
+            
+            <div class="kpi-box">
+                <div class="kpi-title">📊 KPI Cần Theo Dõi</div>
+                <div class="kpi-item"><span>Open rate</span><span class="kpi-value">25-35%</span></div>
+                <div class="kpi-item"><span>Click rate</span><span class="kpi-value">3-7%</span></div>
+                <div class="kpi-item"><span>Conversion to student</span><span class="kpi-value">10-15%</span></div>
+                <div class="kpi-item"><span>Unsubscribe rate</span><span class="kpi-value">< 2%</span></div>
+                <div class="kpi-item"><span>Revenue per email</span><span class="kpi-value">Track theo từng campaign</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active to clicked button
+            event.target.classList.add('active');
+        }
+        
+        function showModal(modalType) {
+            const modalIds = {
+                'ads': 'adsModal',
+                'content': 'contentModal',
+                'lead': 'leadModal',
+                'email': 'emailModal'
+            };
+            
+            const modalId = modalIds[modalType];
+            if (modalId) {
+                document.getElementById(modalId).classList.add('active');
+            }
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+        
+        // Escape key to close modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
