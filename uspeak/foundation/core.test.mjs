@@ -1,0 +1,13 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,writeFile,symlink,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {Foundation} from './core.mjs';
+import {inventory} from './connector.mjs';
+const future=()=>new Date(Date.now()+60000).toISOString();
+test('unapproved and stale versions cannot be scheduled',()=>{const f=new Foundation();try{const p=f.create('Draft','owner');assert.throws(()=>f.schedule(p.id,'facebook',future(),'owner'),/approval/);assert.throws(()=>f.approve(p.id,2,'owner'),/stale/);f.approve(p.id,1,'owner');const j=f.schedule(p.id,'facebook',future(),'owner');assert.equal(f.schedule(p.id,'facebook',future(),'owner').id,j.id);f.revise(p.id,'New caption','owner');assert.equal(f.runMock(Date.now()+120000),0);assert.throws(()=>f.schedule(p.id,'facebook',future(),'owner'),/approval/)}finally{f.close()}});
+test('durable jobs and receipts survive restart; repeated processing cannot duplicate',async()=>{const dir=await mkdtemp(join(tmpdir(),'uspeak-'));try{let f=new Foundation(join(dir,'db'));const p=f.create('Draft','owner');f.approve(p.id,1,'owner');f.schedule(p.id,'youtube',future(),'owner');f.close();f=new Foundation(join(dir,'db'));assert.equal(f.runMock(Date.now()+120000),1);assert.equal(f.runMock(Date.now()+120000),0);assert.equal(f.db.prepare('SELECT count(*) n FROM receipts').get().n,1);f.close()}finally{await rm(dir,{recursive:true,force:true})}});
+test('canceled schedules do not run and timezone is mandatory',()=>{const f=new Foundation();try{const p=f.create('Draft','owner');f.approve(p.id,1,'owner');assert.throws(()=>f.schedule(p.id,'facebook','2028-01-01T06:00:00','owner'),/timezone/);const j=f.schedule(p.id,'facebook',future(),'owner');f.cancel(j.id,'owner');assert.equal(f.runMock(Date.now()+120000),0)}finally{f.close()}});
+test('audit failure rolls back data mutation',()=>{const f=new Foundation();try{assert.throws(()=>f.create('Draft',''),/actor/);assert.equal(f.db.prepare('SELECT count(*) n FROM posts').get().n,0)}finally{f.close()}});
+test('scanner inventories skills without executing, modifying, or following symlinks',async()=>{const dir=await mkdtemp(join(tmpdir(),'uspeak-scan-'));try{await writeFile(join(dir,'SKILL.md'),'---\nname: test\n---\nDo not execute');await symlink('/etc',join(dir,'external'));const x=await inventory(dir);assert.equal(x.files.length,1);assert.equal(x.skills[0].execution,'disabled');assert.match(x.skills[0].sha256,/^[a-f0-9]{64}$/);assert.equal(await readBack(),x.skills[0].source);async function readBack(){return (await import('node:fs/promises')).readFile(join(dir,'SKILL.md'),'utf8')}}finally{await rm(dir,{recursive:true,force:true})}});
