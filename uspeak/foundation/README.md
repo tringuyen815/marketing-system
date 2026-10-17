@@ -2,6 +2,10 @@
 
 Giao diện và API thực cho tạo bản nháp, duyệt đúng phiên bản, lên lịch UTC+07:00, hủy lịch, nhật ký và lưu SQLite. Publishing chỉ là MOCK. Không kết nối AI, NAS từ xa hoặc mạng xã hội. Đây chưa phải MVP hoàn chỉnh và chưa phù hợp production/cloud.
 
+## Khởi động nhanh trên Windows
+
+Mở PowerShell trong thư mục này và chạy `powershell -File .\\start.ps1` nếu chính sách máy cho phép. Script tạo token tạm, sao chép vào clipboard và chạy server. Mở http://127.0.0.1:4317, dán token để đăng nhập. Không cần gửi token cho ai. Nếu máy chặn script, dùng cách PowerShell thủ công bên dưới; không cần hạ chính sách bảo mật máy.
+
 ## Khởi động trên Windows PowerShell
 Cần Node.js 24. Không cần cài npm package. Tại thư mục này:
 
